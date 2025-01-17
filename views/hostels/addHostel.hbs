@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Hostel</title>
+</head>
+<body>
+    <h1>Add a New Hostel</h1>
+    <form action="/hostels/add" method="POST" enctype="multipart/form-data">
+        <label for="hostelName">Hostel Name:</label>
+        <input type="text" id="hostelName" name="hostelName" required><br><br>
+
+        <label for="landLineNumber">Landline Number:</label>
+        <input type="text" id="landLineNumber" name="landLineNumber" required><br><br>
+
+        <label for="mobileNumber">Mobile Number:</label>
+        <input type="text" id="mobileNumber" name="mobileNumber" required><br><br>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required><br><br>
+
+        <label for="googleMap">Google Map:</label>
+        <input type="text" id="googleMap" name="googleMap"><br><br>
+
+        <label for="websiteAddress">Website Address:</label>
+        <input type="text" id="websiteAddress" name="websiteAddress"><br><br>
+
+        <label for="socialMedia">Social Media:</label>
+        <input type="text" id="socialMedia" name="socialMedia"><br><br>
+
+        <label for="hostelFor">Hostel For:</label>
+        <input type="text" id="hostelFor" name="hostelFor" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required><br><br>
+
+        <label for="attachments">Attachments:</label>
+        <input type="file" id="attachments" name="attachments"><br><br>
+
+        <div>
+            <label for="selectAdmin">Select Admin:</label>
+            <select name="selectAdmin" id="selectAdmin" required>
+                <option value="" disabled selected>Select Admin</option>
+                {{#each admins}}
+                    <option value="{{this._id}}">{{this.name}}</option>
+                {{/each}}
+            </select>
+        </div><br>
+
+        <div>
+            <label for="selectWardens">Select Wardens:</label>
+            <select name="selectWardens" id="selectWardens" required>
+                <option value="" disabled selected>Select Warden</option>
+                {{#each wardens}}
+                    <option value="{{this._id}}">{{this.name}}</option>
+                {{/each}}
+            </select>
+        </div><br>
+
+        <button type="submit">Add Hostel</button>
+    </form>
+</body>
+</html>

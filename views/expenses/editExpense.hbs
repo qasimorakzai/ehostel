@@ -1,0 +1,88 @@
+<form action="/expenses/edit/{{expense._id}}" method="POST" enctype="multipart/form-data">
+  <div>
+    <label for="hostel">Select Hostel:</label>
+    <select name="hostel" required>
+      {{#each hostels}}
+        <option value="{{this._id}}" {{#if (eq this._id ../expense.hostel._id)}}selected{{/if}}>{{this.hostelName}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <div>
+    <label for="date">Date:</label>
+    <input type="date" name="date" value="{{expense.date}}" required>
+  </div>
+  <div>
+
+    <!-- Tenant Dropdown -->
+    <div>
+        <label for="tenant">Select Tenant:</label>
+        <select name="tenant" required>
+            {{#each tenants}}
+            <option value="{{this._id}}" {{#if (eq this._id ../expense.tenant._id)}}selected{{/if}}>{{this.name}}</option>
+            {{/each}}
+        </select>
+    </div>
+
+   
+    <!-- Expense Head -->
+  <label for="expenseHead">Expense Head:</label>
+  <select name="expenseHead" required>
+    {{#each expenseHeads}}
+      <option value="{{this._id}}" {{#if (eq this._id ../expense.expenseHead._id)}}selected{{/if}}>{{this.title}}</option>
+    {{/each}}
+  </select>
+
+
+  <div>
+    <label for="expenseTitle">Expense Title:</label>
+    <input type="text" name="expenseTitle" value="{{expense.expenseTitle}}" required>
+  </div>
+  <div>
+    <label for="qty">Quantity:</label>
+    <input type="number" name="qty" value="{{expense.qty}}" required>
+  </div>
+  <div>
+    <label for="unit">Unit:</label>
+    <select name="unit" required>
+      <option value="kg" {{#if (eq expense.unit "kg")}}selected{{/if}}>kg</option>
+      <option value="liter" {{#if (eq expense.unit "liter")}}selected{{/if}}>liter</option>
+      <option value="meter" {{#if (eq expense.unit "meter")}}selected{{/if}}>meter</option>
+      <option value="dozen" {{#if (eq expense.unit "dozen")}}selected{{/if}}>dozen</option>
+    </select>
+  </div>
+  <div>
+    <label for="unitPrice">Unit Price:</label>
+    <input type="number" name="unitPrice" value="{{expense.unitPrice}}" required>
+  </div>
+  <div>
+    <label for="amount">Amount:</label>
+    <input type="number" name="amount" value="{{expense.amount}}" required>
+  </div>
+  <div>
+    <label for="paymentStatus">Payment Status:</label>
+    <select name="paymentStatus" required>
+      <option value="Paid" {{#if (eq expense.paymentStatus "Paid")}}selected{{/if}}>Paid</option>
+      <option value="Unpaid" {{#if (eq expense.paymentStatus "Unpaid")}}selected{{/if}}>Unpaid</option>
+    </select>
+  </div>
+  <div>
+    <label for="paymentMethod">Payment Method:</label>
+    <select name="paymentMethod">
+      <option value="Cash in Hand" {{#if (eq expense.paymentMethod "Cash in Hand")}}selected{{/if}}>Cash in Hand</option>
+      <option value="Personal Account" {{#if (eq expense.paymentMethod "Personal Account")}}selected{{/if}}>Personal Account</option>
+      <option value="Bank" {{#if (eq expense.paymentMethod "Bank")}}selected{{/if}}>Bank</option>
+    </select>
+  </div>
+  <div>
+    <label for="remarks">Remarks:</label>
+    <textarea name="remarks">{{expense.remarks}}</textarea>
+  </div>
+  <div>
+    <label for="attachment">Attachment:</label>
+    <input type="file" name="attachment">
+    {{#if expense.attachments}}
+      <p>Current Attachment: {{expense.attachments}}</p>
+    {{/if}}
+  </div>
+  <button type="submit">Update Expense</button>
+</form>

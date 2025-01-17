@@ -1,0 +1,79 @@
+<form id="bookingForm" action="/bookings/edit/{{booking._id}}" method="POST">
+    <h3>Edit Booking</h3>
+    
+    <div>
+        <label>Rent Type:</label>
+        <input type="radio" name="rentType" value="Daily" {{#ifEquals booking.rentType "Daily"}}checked{{/ifEquals}}> Daily
+        <input type="radio" name="rentType" value="Monthly" {{#ifEquals booking.rentType "Monthly"}}checked{{/ifEquals}}> Monthly
+    </div>
+    
+    <div>
+        <label>Select Tenant:</label>
+        <select name="tenant">
+            {{#each tenants}}
+                <option value="{{this._id}}" {{#ifEquals this._id ../booking.tenant}}selected{{/ifEquals}}>{{this.name}}</option>
+            {{/each}}
+        </select>
+    </div>
+    
+    <div>
+        <label>Select Room:</label>
+        <select id="roomSelect" name="room">
+            {{#each rooms}}
+                <option value="{{this._id}}" data-security="{{this.securityAmount}}" data-rent="{{this.monthlyRent}}" {{#ifEquals this._id ../booking.room}}selected{{/ifEquals}}>{{this.room}}</option>
+            {{/each}}
+        </select>
+    </div>
+    
+    <div>
+        <label>Select Bed:</label>
+        <select name="bed">
+            {{#each beds}}
+                <option value="{{this._id}}" {{#ifEquals this._id ../booking.bed}}selected{{/ifEquals}}>{{this.bedNumber}}</option>
+            {{/each}}
+        </select>
+    </div>
+    
+    <h3>Services</h3>
+    
+    <div>
+        <label>Security:</label>
+        <input type="number" id="securityInput" name="security" value="{{booking.security}}" required>
+    </div>
+    
+    <div>
+        <label>Monthly Rent:</label>
+        <input type="number" id="monthlyRentInput" name="monthlyRent" value="{{booking.monthlyRent}}" required>
+    </div>
+    
+    <div>
+        <label>Check-In Date:</label>
+        <input type="date" name="checkInDate" value="{{formatDate booking.checkInDate 'YYYY-MM-DD'}}" required>
+    </div>
+    
+    <div>
+        <label>Check-Out Date:</label>
+        <input type="date" name="checkOutDate" value="{{#if booking.checkOutDate}}{{formatDate booking.checkOutDate 'YYYY-MM-DD'}}{{/if}}">
+    </div>
+    
+    <div>
+        <label>Remarks:</label>
+        <textarea name="remarks">{{booking.remarks}}</textarea>
+    </div>
+    
+    <button type="submit">Update Booking</button>
+</form>
+
+<script>
+    document.getElementById('roomSelect').addEventListener('change', function() {
+        const selectedOption = this.options[this.selectedIndex];
+        const securityAmount = selectedOption.getAttribute('data-security');
+        const monthlyRent = selectedOption.getAttribute('data-rent');
+
+        document.getElementById('securityInput').value = securityAmount;
+        document.getElementById('monthlyRentInput').value = monthlyRent;
+    });
+
+    // Trigger change event to set initial values if a room is already selected
+    document.getElementById('roomSelect').dispatchEvent(new Event('change'));
+</script>

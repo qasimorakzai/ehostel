@@ -1,0 +1,70 @@
+<form id="bookingForm" action="/bookings/add" method="POST">
+
+    <h3>Booking Details</h3>
+    <div>
+        <label>Rent Type:</label>
+        <input type="radio" name="rentType" value="Daily"> Daily
+        <input type="radio" name="rentType" value="Monthly"> Monthly
+    </div>
+    <div>
+        <label>Select Tenant:</label>
+        <select name="tenant">
+             <option value="disabled">Select Tenant</option>
+            {{#each tenants}}
+                <option value="{{this._id}}">{{this.name}}</option>
+            {{/each}}
+        </select>
+    </div>
+    <br>
+    <div>
+        <label>Select Room:</label>
+        <select id="roomSelect" name="room">
+            <option value="disabled">Select room</option>
+            {{#each rooms}}
+                <option value="{{this._id}}" data-security="{{this.securityAmount}}" data-rent="{{this.monthlyRent}}">{{this.room}}</option>
+            {{/each}}
+        </select>
+    </div>
+    <div>
+        <label>Select Bed:</label>
+        <select name="bed">
+             <option value="disabled">Select Bed</option>
+            {{#each beds}}
+                <option value="{{this._id}}">{{this.bedNumber}}</option>
+            {{/each}}
+        </select>
+    </div>
+    <h3>Services</h3>
+    <div>
+        <label>Security:</label>
+        <input type="number" id="securityInput" name="security" required>
+    </div>
+    <div>
+        <label>Monthly Rent:</label>
+        <input type="number" id="monthlyRentInput" name="monthlyRent" required>
+    </div>
+    <div>
+        <label>Check-In Date:</label>
+        <input type="date" name="checkInDate" required>
+    </div>
+    <div>
+        <label>Check-Out Date:</label>
+        <input type="date" name="checkOutDate">
+    </div>
+    <div>
+        <label>Remarks:</label>
+        <textarea name="remarks"></textarea>
+    </div>
+    <button type="submit">Add Booking</button>
+</form>
+
+<script>
+    document.getElementById('roomSelect').addEventListener('change', function() {
+        const selectedOption = this.options[this.selectedIndex];
+        const securityAmount = selectedOption.getAttribute('data-security');
+        const monthlyRent = selectedOption.getAttribute('data-rent');
+
+        document.getElementById('securityInput').value = securityAmount;
+        document.getElementById('monthlyRentInput').value = monthlyRent;
+    });
+</script>

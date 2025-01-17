@@ -1,0 +1,120 @@
+<form action="/expenses/add" method="POST" enctype="multipart/form-data">
+
+
+    <label for="hostel">Select Hostel:</label>
+    <select name="hostel" required>
+      <option value=""disabled selected>Select Hostel</option>
+      {{#each hostels}}
+        <option value="{{this._id}}">{{this.hostelName}}</option>
+      {{/each}}
+    </select> <br><br>
+
+      {{!-- add tenants --}}
+     <label for="tenant">Select Tenant:</label>
+    <select name="tenant" required>
+      <option value=""disabled selected>Select Tenant</option>
+        {{#each tenants}}
+        <option value="{{this._id}}">{{this.name}}</option>
+        {{/each}}
+    </select> <br><br>
+
+  
+  <!-- Date -->
+  <input type="date" name="date" required> <br><br>
+
+  <!-- Expense Head -->
+   <label for="expenseHead">Expense Head:</label>
+  <select name="expenseHead" required>
+    <option value=""disabled selected>Select Expenses Head</option>
+    {{#each expenseHeads}}
+      <option value="{{this._id}}">{{this.title}}</option>
+    {{/each}}
+  </select>
+
+
+  <!-- Expense Title -->
+  <label for="Expense Title">Expense Title</label>
+  <input type="text" name="expenseTitle" required>
+
+  <!-- Quantity -->
+  <label for="Quantity">Quantity</label>
+  <input type="number" name="qty" id="qty" required>
+
+  <!-- Unit -->
+  <label for="Unit">Unit</label>
+  <select name="unit"  required>
+    <option selected disabled> select Unit</option>
+    <option value="kg">kg</option>
+    <option value="liter">liter</option>
+    <option value="meter">meter</option>
+    <option value="dozen">dozen</option>
+  </select>
+
+  <!-- Unit Price -->
+  <label for="Unit Price">Unit Price</label>
+  <input type="number" name="unitPrice" id="unitPrice" required><br><br>
+
+  <!-- Amount (Auto-calculated using JS) -->
+  <label for="Amount">Amount</label>
+  <input type="text" name="amount" id="amount" readonly><br><br>
+
+  <!-- Total -->
+  <label for="Total">Total</label>
+  <input type="text" name="total" value="0" readonly><br><br><br>
+
+  <!-- Payment Status -->
+  <label for="Payment Status">Payment Status</label><br><br>
+    <input type="radio" name="paymentStatus" value="Paid"> Paid
+  </label>
+  <label>
+    <input type="radio" name="paymentStatus" value="Unpaid"> Unpaid
+  </label>
+
+  <!-- Payment Method (Only if Paid) -->
+  <div id="paymentMethodSection" style="display:none;">
+    <label>
+      <input type="radio" name="paymentMethod" value="Cash in Hand"> Cash in Hand
+    </label>
+    <label>
+      <input type="radio" name="paymentMethod" value="Personal Account"> Personal Account
+    </label>
+    <label>
+      <input type="radio" name="paymentMethod" value="Bank"> Bank
+    </label>
+  </div><br><br>
+
+  <!-- Remarks -->
+  <label for="Remarks">Remarks</label>
+  <textarea name="remarks"></textarea><br><br>
+
+  <!-- Attachments -->
+  <label for="Attachments">Attachments</label>
+  <input type="file" name="attachment"><br><br>
+
+  <button type="submit">Add Expense</button>
+</form>
+
+<script>
+// JavaScript to auto-calculate Amount
+document.getElementById('qty').addEventListener('input', calculateAmount);
+document.getElementById('unitPrice').addEventListener('input', calculateAmount);
+
+function calculateAmount() {
+  const qty = document.getElementById('qty').value;
+  const unitPrice = document.getElementById('unitPrice').value;
+  const amount = qty * unitPrice;
+  document.getElementById('amount').value = amount;
+}
+
+// Show/Hide Payment Method Section based on Payment Status
+document.querySelectorAll('input[name="paymentStatus"]').forEach(radio => {
+  radio.addEventListener('change', function() {
+    const paymentMethodSection = document.getElementById('paymentMethodSection');
+    if (this.value === 'Paid') {
+      paymentMethodSection.style.display = 'block';
+    } else {
+      paymentMethodSection.style.display = 'none';
+    }
+  });
+});
+</script>

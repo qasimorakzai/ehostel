@@ -1,0 +1,30 @@
+<h1>Edit Expense Head</h1>
+<form action="/expenseHeads/edit/{{expenseHead._id}}" method="POST">
+  <!-- Expense Head Title -->
+  <label>Expense Head Title</label>
+  <input type="text" name="title" value="{{expenseHead.title}}" required>
+
+  <!-- Expense Categories (Radio Buttons) -->
+  <label>Expense Categories</label>
+  <label>
+    <input type="radio" name="categories" value="Hostel Expenses" {{#if (eq expenseHead.categories "Hostel Expenses")}}checked{{/if}}> Hostel Expenses
+  </label>
+  <label>
+    <input type="radio" name="categories" value="Tenant Expense" {{#if (eq expenseHead.categories "Tenant Expense")}}checked{{/if}}> Tenant Expense
+  </label>
+
+  <!-- Expense Head Parent -->
+  <label>Expense Head Parent</label>
+  <select name="parent">
+    <option value="">None</option>
+    {{#each allExpenseHeads}}
+      <option value="{{this._id}}" {{#if (eq this._id expenseHead.parent)}}selected{{/if}}>{{this.title}}</option>
+    {{/each}}
+  </select>
+
+  <!-- Remarks -->
+  <label>Remarks</label>
+  <textarea name="remarks">{{expenseHead.remarks}}</textarea>
+
+  <button type="submit">Update Expense Head</button>
+</form>

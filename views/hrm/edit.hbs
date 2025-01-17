@@ -1,0 +1,43 @@
+<!-- views/hrm/edit.hbs -->
+<h1>Edit Employee</h1>
+<form action="/hrm/edit/{{employee._id}}" method="POST">
+  <label for="employeeName">Employee Name:</label>
+  <input type="text" id="employeeName" name="employeeName" value="{{employee.employeeName}}" required><br>
+
+  <label for="designation">Designation:</label>
+  <input type="text" id="designation" name="designation" value="{{employee.designation}}" required><br>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" value="{{employee.email}}" required><br>
+
+  <label for="contact">Contact:</label>
+  <input type="text" id="contact" name="contact" value="{{employee.contact}}" required><br>
+
+  <label>Employee Status:</label>
+  <input type="radio" id="onJob" name="employeeStatus" value="On Job" {{#ifEquals employee.employeeStatus 'On Job'}}checked{{/ifEquals}}>
+  <label for="onJob">On Job</label>
+  <input type="radio" id="left" name="employeeStatus" value="Left" {{#ifEquals employee.employeeStatus 'Left'}}checked{{/ifEquals}}>
+  <label for="left">Left</label>
+  <input type="radio" id="terminated" name="employeeStatus" value="Terminated" {{#ifEquals employee.employeeStatus 'Terminated'}}checked{{/ifEquals}}>
+  <label for="terminated">Terminated</label><br>
+
+  <label for="address">Address:</label>
+  <textarea id="address" name="address">{{employee.address}}</textarea><br>
+
+  <label for="reference">Reference:</label>
+  <input type="text" id="reference" name="reference" value="{{employee.reference}}"><br>
+
+  <label for="employeeSalary">Employee Salary:</label>
+  <input type="number" id="employeeSalary" name="employeeSalary" value="{{employee.employeeSalary}}" required><br>
+
+  <label for="remarks">Remarks:</label>
+  <textarea id="remarks" name="remarks">{{employee.remarks}}</textarea><br>
+
+  <label for="dateOfJoining">Date of Joining:</label>
+  <input type="date" id="dateOfJoining" name="dateOfJoining" value="{{employee.dateOfJoining}}"><br>
+
+  <label for="dateOfLeaving">Date of Leaving:</label>
+  <input type="date" id="dateOfLeaving" name="dateOfLeaving" value="{{employee.dateOfLeaving}}"><br>
+
+  <button type="submit">Update Employee</button>
+</form>

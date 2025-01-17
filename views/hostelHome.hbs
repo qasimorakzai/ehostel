@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <h1>TripSome eHostels</h1><br>
+
+    <div>
+        <form action="/hostels/show" method="GET">
+            <label for="hostelSelect">Select Hostel:</label>
+            <select id="hostelSelect" name="hostel">
+                {{#each hostels}}
+                    <option value="{{this._id}}">{{this.hostelName}}</option>
+                {{/each}}
+            </select>
+            
+        </form><br>
+
+        <a href="/hostels/show">Hostels</a><br>
+        <!-- Other links as needed -->
+    
+    <div>
+        <a href="/rooms/show">Rooms</a>
+    </div><br>
+    <div>
+        <a href="/beds">Beds</a>
+    </div><br>
+    <div>
+        <a href="/tenants">Tenants</a>
+    </div><br>
+    <div>
+        <a href="/bookings/show">Booking</a>
+    </div><br>
+    <div>
+        <a href="/services">Service</a>
+    </div><br>
+    <div>
+        <a href="/expenses">Hotel Expenses</a>
+    </div><br>
+    <div>
+        <a href="/expenseHeads">Ex.Head</a>
+    </div><br>
+    <div>
+       <a href="/expense-items">Ex.items</a>
+    </div><br>
+    <div>
+    <a href="/pettyCash">Petty Cash</a>
+    </div><br>
+    <div>
+    <a href="/tenant-report">Tenant Report</a>
+    </div><br>
+    <div>
+        <a href="/hrm">HRM</a>
+    </div><br>
+    <div>
+        <a href="/bankAccounts">Bank Account</a>
+    </div><br>
+    <div>
+        <a href="/units">Units</a>
+    </div><br>
+    <div>
+        <a href="/managementUsers">Managment User</a>
+    </div><br>
+    <div>
+        <a href="/auth/logout">Logout</a>
+    </div>
+
+</body>
+</html>

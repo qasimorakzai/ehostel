@@ -1,0 +1,57 @@
+<h3>All Bookings</h3><br>
+<input type="text" id="bookearch" placeholder="Search for Booking..."><br><br>
+
+<a href="/bookings/add"><button style="background-color: bisque;">Add Booking</button> </a><br><br>
+
+<table id="bookTable" border="1">
+    <thead style="background-color: blanchedalmond;">
+        <tr>
+            <th>Rent Type</th>
+            <th>Tenant</th>
+            <th>Room</th>
+            <th>Bed</th>
+            <th>Security</th>
+            <th>Monthly Rent</th>
+            <th>Total Amount</th>
+            <th>Check-In Date</th>
+            <th>Check-Out Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody style="background-color: aqua;">
+        {{#each bookings}}
+        <tr>
+            <td>{{this.rentType}}</td>
+            <td>{{this.tenant.name}}</td>
+            <td>{{this.room.room}}</td>
+            <td>{{this.bed.bedNumber}}</td>
+            <td>{{this.security}}</td>
+            <td>{{this.monthlyRent}}</td>
+            <td>{{add this.security this.monthlyRent}}</td> <!-- Total Amount -->
+            <td>{{this.checkInDate}}</td>
+            <td>{{this.checkOutDate}}</td>
+            <td>
+                <a href="/bookings/edit/{{this._id}}">Edit</a>
+                <a href="/bookings/delete/{{this._id}}" onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<!-- JavaScript for filtering the table -->
+<script>
+    document.getElementById('bookearch').addEventListener('keyup', function () {
+        let searchValue = this.value.toLowerCase();
+        let rows = document.querySelectorAll('#bookTable tbody tr');
+
+        rows.forEach(function (row) {
+            let rowText = row.textContent.toLowerCase();
+            if (rowText.includes(searchValue)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+</script>

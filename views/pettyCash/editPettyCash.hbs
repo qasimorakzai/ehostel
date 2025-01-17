@@ -1,0 +1,19 @@
+<h2>Edit Petty Cash</h2>
+<form action="/pettyCash/edit/{{pettyCash._id}}" method="POST" enctype="multipart/form-data">
+    <label>Date</label>
+    <input type="date" name="date" value="{{pettyCash.date}}" required>
+    
+    <label>Amount Added</label>
+    <input type="number" name="amountAdded" value="{{pettyCash.amountAdded}}" required>
+    
+    <label>Attachments</label>
+    <input type="file" name="attachments">
+    {{#if pettyCash.attachments}}
+        <p>Current File: <a href="/uploads/pettyCashAttachments/{{pettyCash.attachments}}" target="_blank">{{pettyCash.attachments}}</a></p>
+    {{/if}}
+    
+    <label>Remarks</label>
+    <textarea name="remarks">{{pettyCash.remarks}}</textarea>
+    
+    <button type="submit">Update Petty Cash</button>
+</form>

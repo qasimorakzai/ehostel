@@ -1,0 +1,70 @@
+<h1>Edit Tenant</h1>
+
+<form action="/tenants/edit/{{tenant._id}}" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" value="{{tenant.name}}" required>
+    
+    <label for="userName">User Name:</label>
+    <input type="text" name="userName" id="userName" value="{{tenant.userName}}" required>
+
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" value="{{tenant.email}}" required>
+
+    <label for="dateOfBirth">Date of Birth:</label>
+    <input type="date" name="dateOfBirth" id="dateOfBirth" value="{{tenant.dateOfBirth}}" required>
+
+    <label for="contact">Contact:</label>
+    <input type="text" name="contact" id="contact" value="{{tenant.contact}}" required>
+
+    <label for="cnic">CNIC:</label>
+    <input type="text" name="cnic" id="cnic" value="{{tenant.cnic}}" required>
+
+    <label for="gender">Gender:</label>
+    <input type="radio" name="gender" value="Male" {{#if (eq tenant.gender "Male")}}checked{{/if}}> Male
+    <input type="radio" name="gender" value="Female" {{#if (eq tenant.gender "Female")}}checked{{/if}}> Female
+
+    <label for="nationality">Nationality:</label>
+    <input type="text" name="nationality" id="nationality" value="{{tenant.nationality}}" required>
+
+    <label for="province">Select Province:</label>
+    <select name="province" id="province" required>
+        <option value="KPK" {{#if (eq tenant.province "KPK")}}selected{{/if}}>KPK</option>
+        <option value="Sindh" {{#if (eq tenant.province "Sindh")}}selected{{/if}}>Sindh</option>
+        <option value="Balochistan" {{#if (eq tenant.province "Balochistan")}}selected{{/if}}>Balochistan</option>
+        <option value="Punjab" {{#if (eq tenant.province "Punjab")}}selected{{/if}}>Punjab</option>
+    </select>
+
+    <label for="country">Country:</label>
+    <input type="text" name="country" id="country" value="{{tenant.country}}" required>
+
+    <label for="profession">Profession:</label>
+    <input type="radio" name="profession" value="Student" {{#if (eq tenant.profession "Student")}}checked{{/if}}> Student
+    <input type="radio" name="profession" value="Govt Job" {{#if (eq tenant.profession "Govt Job")}}checked{{/if}}> Govt Job
+    <input type="radio" name="profession" value="Private Job" {{#if (eq tenant.profession "Private Job")}}checked{{/if}}> Private Job
+    <input type="radio" name="profession" value="Business" {{#if (eq tenant.profession "Business")}}checked{{/if}}> Business
+
+    <label for="remark">Remark:</label>
+    <textarea name="remark" id="remark">{{tenant.remark}}</textarea>
+
+    <h3>Guardian Information</h3>
+    <label for="guardianName">Guardian Name:</label>
+    <input type="text" name="guardianInfo[name]" id="guardianName" value="{{tenant.guardianInfo.name}}" required>
+    
+    <label for="guardianRelation">Relation:</label>
+    <input type="text" name="guardianInfo[relation]" id="guardianRelation" value="{{tenant.guardianInfo.relation}}" required>
+
+    <label for="guardianContact">Contact:</label>
+    <input type="text" name="guardianInfo[contact]" id="guardianContact" value="{{tenant.guardianInfo.contact}}" required>
+
+    <label for="guardianCnic">CNIC:</label>
+    <input type="text" name="guardianInfo[cnic]" id="guardianCnic" value="{{tenant.guardianInfo.cnic}}" required>
+
+    <h3>Emergency Information</h3>
+    <label for="emergencyName">Emergency Contact Name:</label>
+    <input type="text" name="emergencyInfo[name]" id="emergencyName" value="{{tenant.emergencyInfo.name}}" required>
+    
+    <label for="emergencyContact">Emergency Contact:</label>
+    <input type="text" name="emergencyInfo[contact]" id="emergencyContact" value="{{tenant.emergencyInfo.contact}}" required>
+
+    <button type="submit">Update Tenant</button>
+</form>

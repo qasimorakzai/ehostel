@@ -1,0 +1,51 @@
+<!-- views/hrm/index.hbs -->
+<style>
+  table{
+    margin-left: auto;
+    margin-right: auto;
+    
+  }
+  h1,button{
+    display: block;
+  margin: 0 auto;
+    text-align: center;
+  }
+</style>
+
+
+<h1>HRM Employees</h1>
+<!-- Add Search Box -->
+
+
+<a href="/hrm/add"><button>Add New Employee</button></a>
+<br><br>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Designation</th>
+      <th>Email</th>
+      <th>Contact</th>
+      <th>Status</th>
+      <th>Salary</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each employees}}
+    <tr>
+      <td>{{this.employeeName}}</td>
+      <td>{{this.designation}}</td>
+      <td>{{this.email}}</td>
+      <td>{{this.contact}}</td>
+      <td>{{this.employeeStatus}}</td>
+      <td>{{this.employeeSalary}}</td>
+      <td>
+        <a href="/hrm/edit/{{this._id}}">Edit</a>
+        <a href="/hrm/delete/{{this._id}}">Delete</a>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+

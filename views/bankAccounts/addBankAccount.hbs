@@ -1,0 +1,26 @@
+<h1>Add Bank Account</h1>
+<form action="/bankAccounts" method="POST">
+  <label>Bank:</label>
+  <input type="text" name="bank" required><br>
+
+  <label>Bank Branch:</label>
+  <input type="text" name="bankBranch" required><br>
+
+  <label>Account Number:</label>
+  <input type="text" name="accountNumber" required><br>
+
+  <label>IBAN Number:</label>
+  <input type="text" name="ibanNumber" required><br>
+
+  <label>Account Title:</label>
+  <input type="text" name="accountTitle" required><br>
+
+  <label>Opening Balance:</label>
+  <input type="number" name="openingBalance" required><br>
+
+  <label>Status:</label>
+  <input type="radio" name="status" value="Active" required> Active
+  <input type="radio" name="status" value="Inactive" required> Inactive<br>
+
+  <button type="submit">Add Bank Account</button>
+</form>

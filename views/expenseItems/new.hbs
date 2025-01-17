@@ -1,0 +1,21 @@
+<h1>Add New Expense Item</h1>
+<form action="/expense-items" method="POST">
+    <label>Expense Item:</label>
+    <input type="text" name="itemName" required><br><br>
+
+    <label>Expense Head:</label>
+    <select name="expenseHead">
+        {{#each expenseHeads}}
+        <option value="{{this._id}}">{{this.title}}</option>
+        {{/each}}
+    </select><br><br>
+
+    <label>Unit:</label>
+    <input type="text" name="unit" required><br><br>
+
+    <label>Show in List:</label>
+    <input type="radio" name="showInList" value="yes" required> Yes
+    <input type="radio" name="showInList" value="no" required> No<br><br>
+
+    <button type="submit">Add Expense Item</button>
+</form>

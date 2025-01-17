@@ -1,0 +1,30 @@
+<!-- views/services/index.hbs -->
+<h2>All Services</h2>
+<a href="/services/add"><button style="background-color: red;">Add New Service</button> </a><br><br>
+<table border="1">
+    <thead style="background-color: red; ">
+        <tr>
+            <th>Service Title</th>
+            <th>Service Price</th>
+            <th>Charged</th>
+            <th>Remarks</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody style="background-color: rgb(0, 255, 0);">
+        {{#each services}}
+        <tr>
+            <td>{{this.serviceTitle}}</td>
+            <td>{{this.servicePrice}}</td>
+            <td>{{this.charged}}</td>
+            <td>{{this.remarks}}</td>
+            <td>
+                <a href="/services/edit/{{this._id}}">Edit</a>
+                <form action="/services/delete/{{this._id}}" method="GET" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

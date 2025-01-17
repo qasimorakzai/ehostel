@@ -1,0 +1,42 @@
+<form action="/beds" method="POST">
+    <h1>Add New Bed</h1><br>
+    
+    <label for="bedTitle">Bed Title:</label>
+    <input type="text" name="bedTitle" required><br><br>
+
+    <label for="bedNumber">Bed Number:</label>
+    <input type="text" name="bedNumber" required><br><br>
+
+    <label for="room">Select Room:</label>
+    <select name="room" id="room-select" required>
+        <option value="" disabled selected>Select Room</option>
+        {{#each rooms}}
+            <option value="{{this._id}}" data-monthlyRent="{{this.monthlyRent}}" data-securityAmount="{{this.securityAmount}}">
+                {{this.room}}
+            </option>
+        {{/each}}
+    </select><br><br>
+
+    <label for="monthlyRent">Monthly Rent:</label>
+    <input type="text" id="monthlyRent" name="monthlyRent" readonly><br><br>
+
+    <label for="securityAmount">Security Amount:</label>
+    <input type="text" id="securityAmount" name="securityAmount" readonly><br><br>
+
+    <label for="bedStatus">Bed Status:</label>
+    <input type="radio" name="bedStatus" value="Ready" required> Ready
+    <input type="radio" name="bedStatus" value="Not Ready"> Not Ready<br><br>
+
+    <label for="remarks">Remarks:</label>
+    <textarea name="remarks"></textarea><br><br>
+
+    <button type="submit">Add New Bed</button>
+</form>
+
+<script>
+    document.getElementById('room-select').addEventListener('change', function() {
+        const selectedOption = this.options[this.selectedIndex];
+        document.getElementById('monthlyRent').value = selectedOption.getAttribute('data-monthlyRent');
+        document.getElementById('securityAmount').value = selectedOption.getAttribute('data-securityAmount');
+    });
+</script>

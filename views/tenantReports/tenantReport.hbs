@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tenant Report</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Include your CSS file -->
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .no-bookings, .no-services {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tenant Report</h1>
+
+    <!-- Tenant Details -->
+    <h2>Tenant Information</h2>
+    <table>
+        <tr><th>Name:</th><td>{{tenant.name}}</td></tr>
+        <tr><th>Username:</th><td>{{tenant.userName}}</td></tr>
+        <tr><th>Email:</th><td>{{tenant.email}}</td></tr>
+        <!-- Add other tenant details here -->
+    </table>
+
+    <!-- Booking Details -->
+    <h2>Booking Information</h2>
+    {{#if bookings.length}}
+        <table>
+            <thead>
+                <tr>
+                    <th>Rent Type</th>
+                    <th>Room</th>
+                    <th>Bed</th>
+                    <th>Security</th>
+                    <th>Monthly Rent</th>
+                    <th>Total Amount</th>
+                    <th>Check-In Date</th>
+                    <th>Check-Out Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each bookings}}
+                <tr>
+                    <td>{{this.rentType}}</td>
+                    <td>{{this.room.room}}</td>
+                    <td>{{this.bed.bedNumber}}</td>
+                    <td>{{this.security}}</td>
+                    <td>{{this.monthlyRent}}</td>
+                    <td>{{add this.security this.monthlyRent}}</td> <!-- Total Amount -->
+                    <td>{{formatDate this.checkInDate}}</td>
+                    <td>{{#if this.checkOutDate}}{{formatDate this.checkOutDate}}{{else}}N/A{{/if}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    {{else}}
+        <p class="no-bookings">No bookings found for this tenant.</p>
+    {{/if}}
+
+    <!-- Service Details -->
+    <h2>Service Information</h2>
+    {{#if services.length}}
+        <table>
+            <thead>
+                <tr>
+                    <th>Service Title</th>
+                    <th>Service Price</th>
+                    <th>Charged</th>
+                    <th>Hostel</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each services}}
+                <tr>
+                    <td>{{this.serviceTitle}}</td>
+                    <td>{{this.servicePrice}}</td>
+                    <td>{{this.charged}}</td>
+                    <td>{{this.hostel.hostelName}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    {{else}}
+        <p class="no-services">No services found for this tenant.</p>
+    {{/if}}
+
+    <!-- Total Costs -->
+    <h2>Total Costs</h2>
+    <p>Total Booking Cost: {{calculateTotalBookingCost bookings}}</p>
+    <p>Total Service Cost: {{calculateTotalServiceCost services}}</p>
+    <p><strong>Total Amount Due: {{add (calculateTotalBookingCost bookings) (calculateTotalServiceCost services)}}</strong></p>
+
+    <br>
+    <a href="/tenant-report"><button>Generate Another Report</button></a>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<h2>Petty Cash Entries</h2>
+<a href="/pettyCash/add"><button>Add Petty Cash</button></a>
+<br><br>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Amount Added</th>
+            <th>Remarks</th>
+            <th>Attachments</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each pettyCashEntries}}
+        <tr>
+            <td>{{this.date}}</td>
+            <td>{{this.amountAdded}}</td>
+            <td>{{this.remarks}}</td>
+            <td>
+                {{#if this.attachments}}<img src="{{this.attachments}}"alt="Attachment" style="width:100px;">{{/if}}</td>
+            <td>
+                <a href="/pettyCash/edit/{{this._id}}">Edit</a>
+                <form action="/pettyCash/delete/{{this._id}}" method="POST" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

@@ -1,0 +1,6 @@
+<h1>Edit Unit</h1>
+<form action="/units/edit/{{unit._id}}" method="POST">
+    <label for="unitName">Unit Name:</label>
+    <input type="text" id="unitName" name="unitName" value="{{unit.unitName}}" required>
+    <button type="submit">Update</button>
+</form>

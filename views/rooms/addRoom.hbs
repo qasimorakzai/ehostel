@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Room</title>
+</head>
+<body>
+    <h1>Add a New Room</h1>
+    <form action="/rooms/add" method="POST" enctype="multipart/form-data">
+        <label for="hostel">Hostel:</label>
+        <select name="hostel" required>
+            {{#each hostels}}
+                <option value="{{this._id}}">{{this.hostelName}}</option>
+            {{/each}}
+        </select><br>
+
+        <label for="selectFloor">Select Floor:</label>
+        <input type="text" id="selectFloor" name="selectFloor" required><br>
+
+        <label for="room">Room:</label>
+        <input type="text" id="room" name="room" required><br>
+
+        <label for="numberOfBeds">Number Of Beds:</label>
+        <input type="number" id="numberOfBeds" name="numberOfBeds" required><br>
+
+        <label for="monthlyRent">Monthly Rent:</label>
+    <input type="number" name="monthlyRent" required><br><br>
+
+    <label for="securityAmount">Security Amount:</label>
+    <input type="number" name="securityAmount" required><br><br>
+
+        <label for="booked">Booked:</label>
+        <select id="booked" name="booked" required>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select><br>
+
+        <label for="hotWater">Hot Water:</label>
+        <select id="hotWater" name="hotWater" required>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select><br>
+
+        <label for="status">Status:</label>
+        <select id="status" name="status" required>
+            <option value="ready">Ready</option>
+            <option value="out of service">Out of Service</option>
+        </select><br>
+
+        <label for="partitionedType">Partitioned Type:</label>
+        <select id="partitionedType" name="partitionedType" required>
+            <option value="solid">Solid</option>
+            <option value="partitioned">Partitioned</option>
+        </select><br>
+
+        <label for="bath">Bath:</label>
+        <select id="bath" name="bath" required>
+            <option value="attached">Attached</option>
+            <option value="common">Common</option>
+        </select><br>
+
+        <label for="floorType">Floor Type:</label>
+        <select id="floorType" name="floorType" required>
+            <option value="Marble">Marble</option>
+            <option value="Carpet">Carpet</option>
+            <option value="Wooden">Wooden</option>
+            <option value="Others">Others</option>
+        </select><br>
+
+        <label for="window">Window:</label>
+        <select id="window" name="window" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select><br>
+
+        <label for="balcony">Balcony:</label>
+        <select id="balcony" name="balcony" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select><br>
+
+        <label for="ac">A/C:</label>
+        <select id="ac" name="ac" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select><br>
+
+        <label for="heater">Heater:</label>
+        <select id="heater" name="heater" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select><br>
+
+        <label for="furnished">Furnished:</label>
+        <select id="furnished" name="furnished" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select><br>
+
+        <label for="remarks">Remarks:</label>
+        <input type="text" id="remarks" name="remarks"><br>
+
+        <label for="attachments">Attachments:</label>
+        <input type="file" id="attachments" name="attachments"><br>
+
+        <button type="submit">Add Room</button>
+    </form>
+</body>
+</html>

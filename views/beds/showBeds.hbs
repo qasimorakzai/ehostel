@@ -1,0 +1,51 @@
+<h1>All Beds</h1>
+
+<!-- Add Search Box -->
+<input type="text" id="bedSearch" placeholder="Search for beds..."><br><br>
+
+<!-- Add New Bed Button -->
+<a href="/beds/add"><button style="background-color: rgb(42, 165, 69);">Add New Bed</button> </a><br><br>
+
+<table id="bedsTable" border="1">
+    <thead style="background-color: blanchedalmond;">
+        <tr>
+            <th>Bed Title</th>
+            <th>Bed Number</th>
+            <th>Bed Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody style="background-color: aqua;">
+        {{#each beds}}
+        <tr>
+            <td>{{this.bedTitle}}</td>
+            <td>{{this.bedNumber}}</td>
+            <td>{{this.bedStatus}}</td>
+            <td>
+                <!-- Actions (Edit/Delete) -->
+                <a href="/beds/edit/{{this._id}}" class="btn btn-warning">Edit</a>
+                <form action="/beds/delete/{{this._id}}" method="POST" style="display:inline;">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<!-- JavaScript for filtering the table -->
+<script>
+    document.getElementById('bedSearch').addEventListener('keyup', function () {
+        let searchValue = this.value.toLowerCase();
+        let rows = document.querySelectorAll('#bedsTable tbody tr');
+
+        rows.forEach(function (row) {
+            let rowText = row.textContent.toLowerCase();
+            if (rowText.includes(searchValue)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+</script>

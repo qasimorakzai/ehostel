@@ -1,0 +1,25 @@
+<h1>All Units</h1>
+<br>
+<a href="/units/add"> <button>Add New Unit</button></a>
+<br>
+<br>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Unit Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody >
+        {{#each units}}
+        <tr>
+            <td>{{this.unitName}}</td>
+            <td>
+                <a href="/units/edit/{{this._id}}">Edit</a>
+                <a href="/units/delete/{{this._id}}">Delete</a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+

@@ -1,0 +1,70 @@
+<form action="/tenants/add" method="POST">
+
+<h1>add Tenant</h1> <br>
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" required><br><br>
+    
+    <label for="userName">User Name:</label>
+    <input type="text" name="userName" id="userName" required><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" required><br><br>
+
+    <label for="dateOfBirth">Date of Birth:</label>
+    <input type="date" name="dateOfBirth" id="dateOfBirth" required><br><br>
+
+    <label for="contact">Contact:</label>
+    <input type="text" name="contact" id="contact" required><br><br>
+
+    <label for="cnic">CNIC:</label>
+    <input type="text" name="cnic" id="cnic" required><br><br>
+
+    <label for="gender">Gender:</label>
+    <input type="radio" name="gender" value="Male" required> Male
+    <input type="radio" name="gender" value="Female" required> Female <br><br>
+
+    <label for="nationality">Nationality:</label>
+    <input type="text" name="nationality" id="nationality" required> <br><br>
+
+    <label for="province">Select Province:</label>
+    <select name="province" id="province" required>
+        <option value="KPK">KPK</option>
+        <option value="Sindh">Sindh</option>
+        <option value="Balochistan">Balochistan</option>
+        <option value="Punjab">Punjab</option>
+    </select> <br><br>
+
+    <label for="country">Country:</label>
+    <input type="text" name="country" id="country" required><br><br>
+
+    <label for="profession">Profession:</label>
+    <input type="radio" name="profession" value="Student" required> Student
+    <input type="radio" name="profession" value="Govt Job" required> Govt Job
+    <input type="radio" name="profession" value="Private Job" required> Private Job
+    <input type="radio" name="profession" value="Business" required> Business <br><br>
+
+    <label for="remark">Remark:</label>
+    <textarea name="remark" id="remark"></textarea> <br><br>
+
+    <h3>Guardian Information</h3> <br><br>
+    <label for="guardianName">Guardian Name:</label>
+    <input type="text" name="guardianInfo[name]" id="guardianName" required><br><br>
+    
+    <label for="guardianRelation">Relation:</label>
+    <input type="text" name="guardianInfo[relation]" id="guardianRelation" required> <br><br>
+
+    <label for="guardianContact">Contact:</label>
+    <input type="text" name="guardianInfo[contact]" id="guardianContact" required><br><br>
+
+    <label for="guardianCnic">CNIC:</label>
+    <input type="text" name="guardianInfo[cnic]" id="guardianCnic" required><br><br>
+
+    <h3>Emergency Information</h3><br><br>
+    <label for="emergencyName">Emergency Contact Name:</label>
+    <input type="text" name="emergencyInfo[name]" id="emergencyName" required><br><br>
+    
+    <label for="emergencyContact">Emergency Contact:</label>
+    <input type="text" name="emergencyInfo[contact]" id="emergencyContact" required><br><br>
+
+    <button type="submit">Add Tenant</button><br><br>
+</form>

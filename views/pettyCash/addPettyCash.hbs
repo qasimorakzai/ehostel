@@ -1,0 +1,16 @@
+<h2>Add Petty Cash</h2>
+<form action="/pettyCash/add" method="POST" enctype="multipart/form-data">
+    <label>Date</label>
+    <input type="date" name="date" required>
+    
+    <label>Amount Added</label>
+    <input type="number" name="amountAdded" required>
+    
+    <label>Attachments</label>
+    <input type="file" name="attachments">
+    
+    <label>Remarks</label>
+    <textarea name="remarks"></textarea>
+    
+    <button type="submit">Add Petty Cash</button>
+</form>

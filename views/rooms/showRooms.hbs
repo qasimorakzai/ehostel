@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rooms</title>
+</head>
+<body>
+    <h1> Rooms</h1><br>
+    <input type="text" id="roomSearch" placeholder="Search for Room..."><br><br>
+
+    <a href="/rooms/add"> <button style="background-color: rgb(226, 70, 43);">Add New Room</button></a>
+    <br><br>
+    <table id="roomTable" border="1">
+        <thead style="background-color: blanchedalmond;">
+            <tr>
+                <th>Room</th>
+                <th>Number Of Beds</th>
+                <th>Floor </th>
+                <th>Details</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody style="background-color: aqua;">
+            {{#each rooms}}
+            <tr>
+                <td>{{this.room}}</td>
+                <td>{{this.numberOfBeds}}</td>
+                <td>{{this.floorType}}</td>
+                <td>{{this.remarks}}</td>
+                <td>{{this.attachments}}</td>
+                <td>
+                    <a href="/rooms/edit/{{this._id}}">Edit</a>
+                    <a href="/rooms/delete/{{this._id}}">Delete</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+<script>
+    document.getElementById('roomSearch').addEventListener('keyup', function () {
+        let searchValue = this.value.toLowerCase();
+        let rows = document.querySelectorAll('#roomTable tbody tr');
+
+        rows.forEach(function (row) {
+            let rowText = row.textContent.toLowerCase();
+            if (rowText.includes(searchValue)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
+
+
+
+</body>
+</html>

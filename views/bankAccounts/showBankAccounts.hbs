@@ -1,0 +1,34 @@
+<h1>Bank Accounts</h1>
+<a href="/bankAccounts/add"><button>Add Bank Account</button></a>
+<br><br>
+<table border="1">
+  <tr>
+    <th>Bank</th>
+    <th>Branch</th>
+    <th>Account Number</th>
+    <th>IBAN</th>
+    <th>Account Title</th>
+    <th>Date</th>
+    <th>Opening Balance</th>
+    <th>Status</th>
+    <th>Actions</th>
+  </tr>
+  {{#each bankAccounts}}
+  <tr>
+    <td>{{this.bank}}</td>
+    <td>{{this.bankBranch}}</td>
+    <td>{{this.accountNumber}}</td>
+    <td>{{this.ibanNumber}}</td>
+    <td>{{this.accountTitle}}</td>
+    <td>{{this.date}}</td>
+    <td>{{this.openingBalance}}</td>
+    <td>{{this.status}}</td>
+    <td>
+      <a href="/bankAccounts/edit/{{this._id}}">Edit</a>
+      <form action="/bankAccounts/delete/{{this._id}}" method="POST" style="display:inline;">
+        <button type="submit">Delete</button>
+      </form>
+    </td>
+  </tr>
+  {{/each}}
+</table>

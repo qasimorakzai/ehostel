@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Show Hostels</title>
+</head>
+<body>
+    <h1>Hostels</h1>
+    <a href="/hostels/add"><button>Add New Hostel</button> </a><br><br>
+
+    {{#if hostels.length}}
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Hostel Name</th>
+                <th>Landline Number</th>
+                <th>Mobile Number</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Attachments</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each hostels}}
+            <tr>
+                <td>{{this.hostelName}}</td>
+                <td>{{this.landLineNumber}}</td>
+                <td>{{this.mobileNumber}}</td>
+                <td>{{this.address}}</td>
+                <td>{{this.email}}</td>
+                <td>{{#if this.attachments}}<img src="{{this.attachments}}" alt="Attachment" style="width:100px;">{{/if}}</td>
+                <td>
+                    <a href="/hostels/edit/{{this._id}}">Edit</a>
+                    <a href="/hostels/delete/{{this._id}}" onclick="return confirm('Are you sure?')">Delete</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    {{else}}
+    <p>No hostels found.</p>
+    {{/if}}
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Tenant Report</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Include your CSS file -->
+</head>
+<body>
+    <h1>Select Tenant to Generate Report</h1>
+
+    <form action="/tenant-report" method="POST">
+        <div>
+            <label for="tenantId">Select Tenant:</label>
+            <select name="tenantId" id="tenantId" required>
+                <option value="" disabled selected>-- Select Tenant --</option>
+                {{#each tenants}}
+                    <option value="{{this._id}}">{{this.name}} - {{this.email}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <br>
+        <button type="submit">Generate Report</button>
+    </form>
+
+    <br>
+    
+</body>
+</html>

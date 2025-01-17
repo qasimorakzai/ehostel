@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Room</title>
+</head>
+<body>
+    <h1>Edit Room</h1>
+    <form action="/rooms/edit/{{room._id}}" method="POST" enctype="multipart/form-data">
+        <label for="hostel">Hostel:</label>
+        <select name="hostel" required>
+            {{#each hostels}}
+                <option value="{{this._id}}" {{#ifEquals this._id ../room.hostel}}selected{{/ifEquals}}>{{this.hostelName}}</option>
+            {{/each}}
+        </select><br>
+
+        <label for="selectFloor">Select Floor:</label>
+        <input type="text" id="selectFloor" name="selectFloor" value="{{room.selectFloor}}" required><br>
+
+        <label for="room">Room:</label>
+        <input type="text" id="room" name="room" value="{{room.room}}" required><br>
+
+        <label for="numberOfBeds">Number Of Beds:</label>
+        <input type="number" id="numberOfBeds" name="numberOfBeds" value="{{room.numberOfBeds}}" required><br>
+
+        <label for="monthlyRent">Monthly Rent:</label>
+        <input type="number" id="monthlyRent" name="monthlyRent" value="{{room.monthlyRent}}" required><br>
+
+        <label for="securityAmount">Security Amount:</label>
+        <input type="number" id="securityAmount" name="securityAmount" value="{{room.securityAmount}}" required><br>
+
+        <label for="booked">Booked:</label>
+        <select id="booked" name="booked" required>
+            <option value="yes" {{#ifEquals room.booked 'yes'}}selected{{/ifEquals}}>Yes</option>
+            <option value="no" {{#ifEquals room.booked 'no'}}selected{{/ifEquals}}>No</option>
+        </select><br>
+
+        <label for="hotWater">Hot Water:</label>
+        <select id="hotWater" name="hotWater" required>
+            <option value="yes" {{#ifEquals room.hotWater 'yes'}}selected{{/ifEquals}}>Yes</option>
+            <option value="no" {{#ifEquals room.hotWater 'no'}}selected{{/ifEquals}}>No</option>
+        </select><br>
+
+        <label for="status">Status:</label>
+        <select id="status" name="status" required>
+            <option value="ready" {{#ifEquals room.status 'ready'}}selected{{/ifEquals}}>Ready</option>
+            <option value="out of service" {{#ifEquals room.status 'out of service'}}selected{{/ifEquals}}>Out of Service</option>
+        </select><br>
+
+        <label for="partitionedType">Partitioned Type:</label>
+        <select id="partitionedType" name="partitionedType" required>
+            <option value="solid" {{#ifEquals room.partitionedType 'solid'}}selected{{/ifEquals}}>Solid</option>
+            <option value="partitioned" {{#ifEquals room.partitionedType 'partitioned'}}selected{{/ifEquals}}>Partitioned</option>
+        </select><br>
+
+        <label for="bath">Bath:</label>
+        <select id="bath" name="bath" required>
+            <option value="attached" {{#ifEquals room.bath 'attached'}}selected{{/ifEquals}}>Attached</option>
+            <option value="common" {{#ifEquals room.bath 'common'}}selected{{/ifEquals}}>Common</option>
+        </select><br>
+
+        <label for="floorType">Floor Type:</label>
+        <select id="floorType" name="floorType" required>
+            <option value="Marble" {{#ifEquals room.floorType 'Marble'}}selected{{/ifEquals}}>Marble</option>
+            <option value="Carpet" {{#ifEquals room.floorType 'Carpet'}}selected{{/ifEquals}}>Carpet</option>
+            <option value="Wooden" {{#ifEquals room.floorType 'Wooden'}}selected{{/ifEquals}}>Wooden</option>
+            <option value="Others" {{#ifEquals room.floorType 'Others'}}selected{{/ifEquals}}>Others</option>
+        </select><br>
+
+        <label for="window">Window:</label>
+        <select id="window" name="window" required>
+            <option value="Yes" {{#ifEquals room.window 'Yes'}}selected{{/ifEquals}}>Yes</option>
+            <option value="No" {{#ifEquals room.window 'No'}}selected{{/ifEquals}}>No</option>
+        </select><br>
+
+        <label for="balcony">Balcony:</label>
+        <select id="balcony" name="balcony" required>
+            <option value="Yes" {{#ifEquals room.balcony 'Yes'}}selected{{/ifEquals}}>Yes</option>
+            <option value="No" {{#ifEquals room.balcony 'No'}}selected{{/ifEquals}}>No</option>
+        </select><br>
+
+        <label for="ac">A/C:</label>
+        <select id="ac" name="ac" required>
+            <option value="Yes" {{#ifEquals room.ac 'Yes'}}selected{{/ifEquals}}>Yes</option>
+            <option value="No" {{#ifEquals room.ac 'No'}}selected{{/ifEquals}}>No</option>
+        </select><br>
+
+        <label for="heater">Heater:</label>
+        <select id="heater" name="heater" required>
+            <option value="Yes" {{#ifEquals room.heater 'Yes'}}selected{{/ifEquals}}>Yes</option>
+            <option value="No" {{#ifEquals room.heater 'No'}}selected{{/ifEquals}}>No</option>
+        </select><br>
+
+        <label for="furnished">Furnished:</label>
+        <select id="furnished" name="furnished" required>
+            <option value="Yes" {{#ifEquals room.furnished 'Yes'}}selected{{/ifEquals}}>Yes</option>
+            <option value="No" {{#ifEquals room.furnished 'No'}}selected{{/ifEquals}}>No</option>
+        </select><br>
+
+        <label for="remarks">Remarks:</label>
+        <textarea id="remarks" name="remarks">{{room.remarks}}</textarea><br>
+
+        <label for="attachments">Attachments:</label>
+        <input type="file" id="attachments" name="attachments"><br>
+
+        <button type="submit">Update Room</button>
+    </form>
+</body>
+</html>

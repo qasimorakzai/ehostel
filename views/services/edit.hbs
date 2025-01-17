@@ -1,0 +1,31 @@
+<h2>Edit Service</h2>
+<form action="/services/edit/{{service._id}}" method="POST">
+    <label for="serviceTitle">Service Title:</label>
+    <input type="text" name="serviceTitle" value="{{service.serviceTitle}}" required>
+
+    <label for="servicePrice">Service Price:</label>
+    <input type="number" name="servicePrice" value="{{service.servicePrice}}" required>
+
+    <label for="charged">Charged:</label>
+    <input type="radio" name="charged" value="Monthly" {{#if (eq service.charged 'Monthly')}}checked{{/if}} required> Monthly
+    <input type="radio" name="charged" value="No Of Usage" {{#if (eq service.charged 'No Of Usage')}}checked{{/if}} required> No Of Usage
+
+    <label for="hostel">Hostel:</label>
+    <select name="hostel" required>
+        {{#each hostels}}
+            <option value="{{this._id}}" {{#if (eq this._id ../service.hostel._id)}}selected{{/if}}>{{this.hostelName}}</option>
+        {{/each}}
+    </select>
+
+    <label for="tenant">Tenant:</label>
+    <select name="tenant" required>
+        {{#each tenants}}
+            <option value="{{this._id}}" {{#if (eq this._id ../service.tenant._id)}}selected{{/if}}>{{this.name}}</option>
+        {{/each}}
+    </select>
+
+    <label for="remarks">Remarks:</label>
+    <textarea name="remarks">{{service.remarks}}</textarea>
+
+    <button type="submit">Update Service</button>
+</form>

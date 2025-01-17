@@ -1,0 +1,43 @@
+<h1>Hostel Expenses</h1>
+
+<!-- Add Hostel Expense Button -->
+<a href="/expenses/add" class="btn btn-primary"><button>Add Hostel Expense</button> </a> <br><br>
+
+<!-- Table to show expenses -->
+<table border="1" >
+  <thead style="background-color: antiquewhite;">
+    <tr>
+      
+      <th>Date</th>
+      <th>Qty</th>
+      <th>Amount</th>
+      <th>Total</th>
+      <th>Payment Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody style="background-color: rgb(223, 173, 98); " >
+    {{#each expenses}}
+    <tr>
+     
+      <td>{{this.date}}</td>
+      <td>{{this.expenseTitle}}</td>
+      <td>{{this.amount}}</td>
+      <td>{{this.total}}</td>
+      <td>{{this.paymentStatus}}</td>
+      <td>
+        <!-- Action buttons (Edit, Delete) -->
+        <a href="/expenses/edit/{{this._id}}">Edit</a>
+        <form action="/expenses/delete/{{this._id}}" method="POST" style="display:inline;">
+          <button type="submit">Delete</button>
+        </form>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+{{!-- Check if there are no expenses --}}
+{{#unless expenses.length}}
+<p>No expenses found. Add a new hostel expense!</p>
+{{/unless}}

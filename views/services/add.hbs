@@ -1,0 +1,31 @@
+<h2>Add New Service</h2>
+<form action="/services/add" method="POST">
+    <label for="serviceTitle">Service Title:</label>
+    <input type="text" name="serviceTitle" required><br><br>
+
+    <label for="servicePrice">Service Price:</label>
+    <input type="number" name="servicePrice" required><br><br>
+
+    <label for="charged">Charged:</label>
+    <input type="radio" name="charged" value="Monthly" required> Monthly
+    <input type="radio" name="charged" value="No Of Usage" required> No Of Usage <br><br>
+
+    <label for="hostel">Hostel:</label>
+    <select name="hostel" required>
+        {{#each hostels}}
+            <option value="{{this._id}}">{{this.hostelName}}</option>
+        {{/each}}
+    </select><br><br>
+
+    <label for="tenant">Tenant:</label>
+    <select name="tenant" required>
+        {{#each tenants}}
+            <option value="{{this._id}}">{{this.name}}</option>
+        {{/each}}
+    </select><br><br>
+
+    <label for="remarks">Remarks:</label>
+    <textarea name="remarks"></textarea><br><br>
+
+    <button type="submit">Add Service</button>
+</form>

@@ -1,0 +1,29 @@
+<h1>Expense Items</h1>
+<a href="/expense-items/new"><button>Add New Expense Item</button></a> <br><br>
+<table border="1">
+    <thead style="background-color: antiquewhite;">
+    <tr>
+        <th>Expense Item</th>
+        <th>Expense Head</th>
+        <th>Unit</th>
+        <th>Show in List</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each expenseItems}}
+    <tr>
+        <td>{{this.itemName}}</td>
+        <td>{{this.expenseHead.title}}</td>
+        <td>{{this.unit}}</td>
+        <td>{{#if this.showInList}}Yes{{else}}No{{/if}}</td>
+        <td>
+            <a href="/expense-items/{{this._id}}/edit">Edit</a>
+            <form action="/expense-items/{{this._id}}/delete" method="POST" style="display:inline;">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    {{/each}}
+    </tbody>
+</table>

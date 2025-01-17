@@ -1,0 +1,27 @@
+<h2>All Users</h2>
+<a href="/managementUsers/add"><button>Add New User</button></a>
+<br><br>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each users}}
+        <tr>
+            <td>{{this.name}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.role}}</td>
+            <td>
+                <a href="/managementUsers/edit/{{this._id}}">Edit</a>
+                <a href="/managementUsers/delete/{{this._id}}">Delete</a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+

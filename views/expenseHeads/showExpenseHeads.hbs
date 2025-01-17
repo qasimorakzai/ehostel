@@ -1,0 +1,34 @@
+<h1>All Expense Heads</h1>
+<a href="/expenseHeads/add" class="btn btn-primary"><button>Add Expense Head</button></a>
+<br><br>
+<table border="1">
+  <thead style="background-color: aquamarine;">
+    <tr>
+      <th>Title</th>
+      <th>Categories</th>
+      <th>Parent</th>
+      <th>Remarks</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody style="background-color: beige;">
+    {{#each expenseHeads}}
+    <tr>
+      <td>{{this.title}}</td>
+      <td>{{this.categories}}</td>
+      <td>{{#if this.parent}}{{this.parent.title}}{{else}}None{{/if}}</td>
+      <td>{{this.remarks}}</td>
+      <td>
+        <a href="/expenseHeads/edit/{{this._id}}">Edit</a>
+        <form action="/expenseHeads/delete/{{this._id}}" method="POST" style="display:inline;">
+          <button type="submit">Delete</button>
+        </form>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+{{#unless expenseHeads.length}}
+<p>No Expense Heads found!</p>
+{{/unless}}

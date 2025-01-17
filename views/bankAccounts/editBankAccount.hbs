@@ -1,0 +1,26 @@
+<h1>Edit Bank Account</h1>
+<form action="/bankAccounts/edit/{{bankAccount._id}}" method="POST">
+  <label>Bank:</label>
+  <input type="text" name="bank" value="{{bankAccount.bank}}" required><br>
+
+  <label>Bank Branch:</label>
+  <input type="text" name="bankBranch" value="{{bankAccount.bankBranch}}" required><br>
+
+  <label>Account Number:</label>
+  <input type="text" name="accountNumber" value="{{bankAccount.accountNumber}}" required><br>
+
+  <label>IBAN Number:</label>
+  <input type="text" name="ibanNumber" value="{{bankAccount.ibanNumber}}" required><br>
+
+  <label>Account Title:</label>
+  <input type="text" name="accountTitle" value="{{bankAccount.accountTitle}}" required><br>
+
+  <label>Opening Balance:</label>
+  <input type="number" name="openingBalance" value="{{bankAccount.openingBalance}}" required><br>
+
+  <label>Status:</label>
+  <input type="radio" name="status" value="Active" {{#if (eq bankAccount.status 'Active')}}checked{{/if}}> Active
+  <input type="radio" name="status" value="Inactive" {{#if (eq bankAccount.status 'Inactive')}}checked{{/if}}> Inactive<br>
+
+  <button type="submit">Update Bank Account</button>
+</form>
